@@ -7,6 +7,8 @@ defmodule TheBackendWeb.Router do
 
   scope "/api", TheBackendWeb do
     pipe_through :api
+
+    post "/process_prompt", PromptController, :process
   end
 
   # Enable LiveDashboard and Swoosh mailbox preview in development
