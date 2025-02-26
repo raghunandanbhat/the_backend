@@ -107,7 +107,7 @@ defmodule TheBackendWeb.PromptController do
   }
 
   @gemini_api_url "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent"
-  @api_key System.get_env("GEMINI_API_KEY")
+  # System.get_env("GEMINI_API_KEY")
 
   def process(conn, %{"prompt" => prompt}) do
     case call_llm_api(prompt) do
@@ -140,7 +140,10 @@ defmodule TheBackendWeb.PromptController do
   end
 
   defp call_llm_api(prompt) do
-    url = "#{@gemini_api_url}?key=#{@api_key}"
+    api_key = TheBackend.Config.gemini_api_key()
+    url = "#{@gemini_api_url}?key=#{api_key}"
+
+    IO.inspect(url, label: "Gemini API URL")
     headers = [{"Content-Type", "application/json"}]
 
     body = %{
