@@ -2,7 +2,7 @@ defmodule TheBackendWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :the_backend
 
   # temp fix to call this from localhost
-  plug CORSPlug, origin: ["http://localhost:3000"]
+  plug CORSPlug, origin: ["http://localhost:3000", "https://simple-front-end.fly.dev"]
 
   # The session will be stored in the cookie and signed,
   # this means its contents can be read but not tampered with.
